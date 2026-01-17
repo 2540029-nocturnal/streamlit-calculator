@@ -1,8 +1,6 @@
 import streamlit as st
 
-# -------------------------------
-# Functions for arithmetic logic
-# -------------------------------
+
 def add(x, y):
     return x + y
 
@@ -17,23 +15,19 @@ def divide(x, y):
         return "Error: Division by zero!"
     return x / y
 
-# -------------------------------
-# Streamlit UI
-# -------------------------------
+
 st.title("🧮 Simple Calculator Application")
 
-# Input fields
-num1 = st.number_input("Enter first number:", step=1.0)
-num2 = st.number_input("Enter second number:", step=1.0)
+num1 = st.number_input("Enter first number:", step=1.0, key="num1")
+num2 = st.number_input("Enter second number:", step=1.0, key="num2")
 
-# Operation selection
 operation = st.radio(
     "Choose an operation:",
-    ("Addition", "Subtraction", "Multiplication", "Division")
+    ("Addition", "Subtraction", "Multiplication", "Division"),
+    key="operation"
 )
 
-# Compute result
-if st.button("Calculate"):
+if st.button("Calculate", key="calculate"):
     if operation == "Addition":
         result = add(num1, num2)
     elif operation == "Subtraction":
